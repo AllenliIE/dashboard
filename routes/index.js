@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.send('Hello world!')
-})
+const dashboardController = require('../controllers/dashboard-controller')
+
+router.get('/dashboards', dashboardController.getDashboards)
+router.use('/', (req, res) => res.redirect('/dashboards'))
 
 module.exports = router
