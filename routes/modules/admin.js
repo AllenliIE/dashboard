@@ -4,6 +4,6 @@ const adminController = require('../../controllers/admin-controller')
 const { authenticatedAdmin } = require('../../middleware/auth')
 
 router.get('/dashboards', authenticatedAdmin, adminController.getDashboards)
-router.use('/', (req, res) => res.redirect('/admin/dashboards'))
+router.get('/', (req, res) => res.redirect('/admin/dashboards'))
 
 module.exports = router

@@ -15,7 +15,7 @@ router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
 router.get('/logout', userController.logout)
 router.get('/dashboards', authenticated, dashboardController.getDashboards)
-router.use('/', (req, res) => res.redirect('/dashboards'))
+router.get('/', (req, res) => res.redirect('/dashboards'))
 router.use('/', generalErrorHandler)
 
 module.exports = router
