@@ -1,0 +1,64 @@
+{{>admin-aside}}
+<div class="col-10 p-0" style="background-color:#CEE1F2">
+  <div class="card m-3" style="witdh:1140px; height:890px;">
+    <nav class="navbar m-3">
+      <div class="container-fluid">
+        <a href='/admin/tables/create'>
+          <button type="button" class="btn btn-primary">New Order</button>
+        </a>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <table class="table m-3">
+      <thead>
+        <tr>
+          <th scope="col">Order</th>
+          <th scope="col">Name</th>
+          <th scope="col">Office</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Date</th>
+          <th scope="col">Owner</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each dashboards}}
+        <tr class="align-middle">
+          <th scope="row">{{this.id}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.office}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.quantity}}</td>
+          <td>{{this.cost}}</td>
+          <td>{{this.date}}</td>
+          <td>{{this.owner}}</td>
+          <td>
+            <button type="button" class="btn btn-link">
+              <a class="btn btn-link link-primary" href="/admin/dashboards/{{this.id}}/edit">
+                Edit
+              </a>
+            </button>
+            <form action="/admin/dashboards/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-link link-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-primary">1</button>
+        <button type="button" class="btn btn-primary">2</button>
+        <button type="button" class="btn btn-primary">3</button>
+        <button type="button" class="btn btn-primary">4</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{>footer}}
