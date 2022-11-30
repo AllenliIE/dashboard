@@ -1,0 +1,51 @@
+{{>admin-aside}}
+<div class="col-10 p-0" style="background-color:#CEE1F2">
+  <div class="card m-3" style="witdh:1140px; height:890px;">
+    <div class="m-5">
+      <form action="/admin/tables" method="POST">
+        <div class="mb-4 text-center">
+          <h1 class="h3 font-weight-normal mb-3">Create Order</h1>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="name">Name :</label>
+          <input class="form-control" type="text" name="name" id="name" placeholder="Enter name" value="{{name}}"
+            required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="office">Office :</label>
+          <input class="form-control" type="text" name="office" id="office" placeholder="Enter office"
+            value="{{office}}" required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="price">Price :</label>
+          <input class="form-control" type="text" name="price" id="price" placeholder="Enter price" value="{{price}}"
+            required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="quantity">Quantity :</label>
+          <input class="form-control" type="text" name="quantity" id="quantity" placeholder="Enter quantity"
+            value="{{quantity}}" required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="cost">Cost :</label>
+          <input class="form-control" type="text" name="cost" id="cost" placeholder="Enter cost" value="{{cost}}"
+            required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="date">Date :</label>
+          <input class="form-control" type="date" name="date" id="date" placeholder="Enter date" value="{{date}}"
+            required>
+        </div>
+        <div class="form-row mb-3">
+          <label class="form-label" for="owner">Owner :</label>
+          <input class="form-control" type="text" name="owner" id="owner" placeholder="Enter owner" value="{{owner}}"
+            required>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{>footer}}
