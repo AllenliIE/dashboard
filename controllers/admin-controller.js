@@ -45,6 +45,15 @@ const adminController = {
         res.redirect('/admin/tables')
       })
       .catch(err => next(err))
+  },
+  deleteTable: (req, res, next) => {
+    return Dashboard.findByPk(req.params.id)
+      .then(dashboard => {
+        if (!dashboard) throw new Error('Order did not exist')
+        return dashboard.destroy()
+      })
+      .then(() => res.redirect('/admin/tables'))
+      .catch(err => next(err))
   }
 }
 
