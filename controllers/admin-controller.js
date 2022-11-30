@@ -23,6 +23,28 @@ const adminController = {
         res.redirect('/admin/tables')
       })
       .catch(err => next(err))
+  },
+  editTable: (req, res, next) => {
+    Dashboard.findByPk(req.params.id, { raw: true })
+      .then(dashboard => {
+        if (!dashboard) throw new Error('Order did not exist!')
+        res.render('admin/edit-table', { dashboard })
+      })
+      .catch(err => next(err))
+  },
+  putTable: (req, res, next) => {
+    const { name, office, price, quantity, cost, date, owner } = req.body
+    if (!req.body) throw new Error('Order information is required')
+    Dashboard.findByPk(req.params.id)
+      .then(dashboard => {
+        if (!dashboard) throw new Error('Order did not exist')
+        return dashboard.update({ name, office, price, quantity, cost, date, owner })
+      })
+      .then(() => {
+        req.flash('success_messages', 'Order was successfully to update')
+        res.redirect('/admin/tables')
+      })
+      .catch(err => next(err))
   }
 }
 

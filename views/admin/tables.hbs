@@ -39,11 +39,11 @@
           <td>{{this.owner}}</td>
           <td>
             <button type="button" class="btn btn-link">
-              <a class="btn btn-link link-primary" href="/admin/dashboards/{{this.id}}/edit">
+              <a class="btn btn-link link-primary" href="/admin/tables/{{this.id}}/edit">
                 Edit
               </a>
             </button>
-            <form action="/admin/dashboards/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
+            <form action="/admin/tables/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
               <button type="submit" class="btn btn-link link-danger">Delete</button>
             </form>
           </td>
