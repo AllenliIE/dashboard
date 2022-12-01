@@ -1,18 +1,15 @@
-{{>admin-aside}}
+{{>aside}}
 <div class="col-10 p-0" style="background-color:#CEE1F2">
   <div class="card m-3" style="witdh:1140px; height:890px;">
     <nav class="navbar m-3">
-      <div class="container-fluid">
-        <a href='/admin/tables/create'>
-          <button type="button" class="btn btn-primary">New Order</button>
-        </a>
+      <div class="container-fluid flex-row-reverse">
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
       </div>
     </nav>
-    <table class="table m-3 table-striped table-hover">
+    <table class="table m-3">
       <thead>
         <tr>
           <th scope="col">Order</th>
@@ -38,15 +35,7 @@
           <td>{{this.date}}</td>
           <td>{{this.owner}}</td>
           <td>
-            <button type="button" class="btn btn-link">
-              <a class="btn btn-link link-primary" href="/admin/tables/{{this.id}}/edit">
-                Edit
-              </a>
-            </button>
-            <form action="/admin/tables/{{this.id}}?_method=DELETE" method="POST" style="display: inline;">
-              <button type="submit" class="btn btn-link link-danger"
-                onclick="return confirm(`Are you sure you want to delete the {{ this.name }} 嗎？`)">Delete</button>
-            </form>
+            -
           </td>
         </tr>
         {{/each}}
