@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const db = require('../models')
 const { User } = db
+const { Dashboard } = require('../models')
 
 const userController = {
   signUpPage: (req, res) => {
@@ -36,6 +37,13 @@ const userController = {
     req.flash('success_messages', 'Successful user logout!')
     req.logout()
     res.redirect('/signin')
+  },
+  getTables: (req, res, next) => {
+    Dashboard.findAll({
+      raw: true
+    })
+      .then(dashboards => res.render('dashboards-table', { dashboards }))
+      .catch(err => next(err))
   }
 }
 
