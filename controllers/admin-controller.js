@@ -54,6 +54,12 @@ const adminController = {
       })
       .then(() => res.redirect('/admin/tables'))
       .catch(err => next(err))
+  },
+  getAnalysis: (req, res, next) => {
+    res.render('admin/analysis')
+  },
+  getCategory: (req, res, next) => {
+    res.render('admin/category')
   }
 }
 
