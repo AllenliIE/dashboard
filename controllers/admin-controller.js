@@ -55,6 +55,9 @@ const adminController = {
       .then(() => res.redirect('/admin/tables'))
       .catch(err => next(err))
   },
+  getProfile: (req, res, next) => {
+    res.render('admin/profile')
+  },
   getAnalysis: (req, res, next) => {
     res.render('admin/analysis')
   },
