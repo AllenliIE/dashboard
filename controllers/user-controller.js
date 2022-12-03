@@ -50,6 +50,13 @@ const userController = {
       })
       .catch(err => next(err))
   },
+  getCategory: (req, res, next) => {
+    Dashboard.findAll({
+      raw: true
+    })
+      .then(dashboards => res.render('dashboards-category'))
+      .catch(err => next(err))
+  },
   getTables: (req, res, next) => {
     Dashboard.findAll({
       raw: true
