@@ -1,7 +1,12 @@
 {{>admin-aside}}
 <div class="col-10 p-0" style="background-color:#CEE1F2">
   <div class="card m-3" style="witdh:1140px; height:890px;">
-    <div>admin dashboards comming soon</div>
+    {{#each bulletins}}
+    <p class="text-primary fs-3 m-3">{{this.content}}</p>
+    {{/each}}
+    <img
+      src="https://4.bp.blogspot.com/-i6ypT4BSTGs/W7IGOOCUeCI/AAAAAAABBOE/eBx6CoDz8l0fDUF25j54unK7WsjmzFIxQCLcBGAs/s1600/industry-40.png"
+      alt="industry4.0" class="m-3">
   </div>
 </div>
 {{>footer}}

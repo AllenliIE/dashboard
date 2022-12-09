@@ -1,8 +1,12 @@
-const { Dashboard } = require('../models')
+const { Dashboard, Bulletin } = require('../models')
 
 const adminController = {
   getDashboards: (req, res, next) => {
-    return res.render('admin/dashboards')
+    Bulletin.findAll({
+      raw: true
+    })
+      .then(bulletins => res.render('admin/dashboards', { bulletins }))
+      .catch(err => next(err))
   },
   getTables: (req, res, next) => {
     Dashboard.findAll({
