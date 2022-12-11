@@ -8,6 +8,28 @@ const adminController = {
       .then(bulletins => res.render('admin/dashboards', { bulletins }))
       .catch(err => next(err))
   },
+  editBulletin: (req, res, next) => {
+    Bulletin.findByPk(req.params.id, { raw: true })
+      .then(bulletin => {
+        if (!bulletin) throw new Error('Bulletin did not exist!')
+        res.render('admin/edit-bulletin', { bulletin })
+      })
+      .catch(err => next(err))
+  },
+  putBulletin: (req, res, next) => {
+    const { content } = req.body
+    if (!content) throw new Error('Bulletin information is required!')
+    Bulletin.findByPk(req.params.id)
+      .then(bulletin => {
+        if (!bulletin) throw new Error('Bulletin did not exist!')
+        return bulletin.update({ content })
+      })
+      .then(() => {
+        req.flash('success_messages', 'Bulletin was successfully to update!')
+        res.redirect('/admin/dashboards')
+      })
+      .catch(err => next(err))
+  },
   getTables: (req, res, next) => {
     Dashboard.findAll({
       raw: true
@@ -20,10 +42,10 @@ const adminController = {
   },
   postTable: (req, res, next) => {
     const { name, office, price, quantity, cost, date, owner } = req.body
-    if (!req.body) throw new Error('Order information is required')
+    if (!req.body) throw new Error('Order information is required!')
     Dashboard.create({ name, office, price, quantity, cost, date, owner })
       .then(() => {
-        req.flash('success_messages', 'Order was successfully created')
+        req.flash('success_messages', 'Order was successfully created!')
         res.redirect('/admin/tables')
       })
       .catch(err => next(err))
@@ -38,14 +60,14 @@ const adminController = {
   },
   putTable: (req, res, next) => {
     const { name, office, price, quantity, cost, date, owner } = req.body
-    if (!req.body) throw new Error('Order information is required')
+    if (!req.body) throw new Error('Order information is required!')
     Dashboard.findByPk(req.params.id)
       .then(dashboard => {
-        if (!dashboard) throw new Error('Order did not exist')
+        if (!dashboard) throw new Error('Order did not exist!')
         return dashboard.update({ name, office, price, quantity, cost, date, owner })
       })
       .then(() => {
-        req.flash('success_messages', 'Order was successfully to update')
+        req.flash('success_messages', 'Order was successfully to update!')
         res.redirect('/admin/tables')
       })
       .catch(err => next(err))
@@ -53,7 +75,7 @@ const adminController = {
   deleteTable: (req, res, next) => {
     return Dashboard.findByPk(req.params.id)
       .then(dashboard => {
-        if (!dashboard) throw new Error('Order did not exist')
+        if (!dashboard) throw new Error('Order did not exist!')
         return dashboard.destroy()
       })
       .then(() => res.redirect('/admin/tables'))

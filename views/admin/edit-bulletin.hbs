@@ -1,0 +1,19 @@
+{{>admin-aside}}
+<div class="col-10 p-0" style="background-color:#CEE1F2">
+  <div class="card m-3" style="witdh:1140px; height:890px;">
+    <div class="input-group">
+      <form action="/admin/dashboards/{{bulletin.id}}?_method=PUT" method="POST">
+        <div class="d-flex justify-content-between">
+          <input type="text" class="form-control text-primary fs-3" name="content" id="content" placeholder="content"
+            aria-label="content" aria-describedby="basic-addon1" style="width:1230px;" value="{{bulletin.content}}">
+          <button type="submit" class="btn btn-primary m-3">
+            OK!</button>
+        </div>
+      </form>
+    </div>
+    <img
+      src="https://4.bp.blogspot.com/-i6ypT4BSTGs/W7IGOOCUeCI/AAAAAAABBOE/eBx6CoDz8l0fDUF25j54unK7WsjmzFIxQCLcBGAs/s1600/industry-40.png"
+      alt="industry4.0" class="m-3">
+  </div>
+</div>
+{{>footer}}
