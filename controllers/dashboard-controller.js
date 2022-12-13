@@ -1,4 +1,4 @@
-const { Dashboard, Bulletin } = require('../models')
+const { Dashboard, Bulletin, User } = require('../models')
 
 const dashboardController = {
   getDashboards: (req, res, next) => {
@@ -6,6 +6,16 @@ const dashboardController = {
       raw: true
     })
       .then(bulletins => res.render('dashboards', { bulletins }))
+      .catch(err => next(err))
+  },
+  getUser: (req, res, next) => {
+    User.findByPk(req.params.id, {
+      raw: true
+    })
+      .then(user => {
+        if (!user) throw new Error('User did not exist!')
+        res.render('dashboards-profile', { user })
+      })
       .catch(err => next(err))
   },
   getAnalysis: (req, res, next) => {
